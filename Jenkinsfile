@@ -4,23 +4,12 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10'))
         }
     triggers {
-        cron(env.BRANCH_NAME == 'main' ? 'H 0 * * *' : '')
         pollSCM('*/5 * * * *')
     }
     environment {
         CI = 'true'
     }
     stages {
-        stage('Build') {
-            steps {
-                echo 'No code to build :)'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'No test to run:)'
-            }
-        }
         stage('Pull webgoat docker Image') {
 
              steps {
@@ -41,7 +30,6 @@ pipeline {
 
              }
         }
-
     }
 	post {
          always {
