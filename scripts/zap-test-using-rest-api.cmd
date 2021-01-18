@@ -8,8 +8,8 @@ call curl "http://localhost:8090/JSON/spider/action/scan/?zapapiformat=JSON&form
 
 call echo "aktive scan"
 call curl "http://localhost:8090/JSON/ascan/action/scan/?zapapiformat=JSON&formMethod=GET&url=http://localhost:8080/WebGoat&recurse=&inScopeOnly=&scanPolicyName=&method=&postData=&contextId="
-call echo "Vent 30 sekunder"
-call timeout 30
+call echo "Vent 20 sekunder"
+call timeout 20
 REM gem report et bestemt sted
 call curl "http://127.0.0.1:8090/OTHER/core/other/jsonreport/?formMethod=GET" > ZAP_Report.json
 call curl "http://127.0.0.1:8090/JSON/alert/view/alertsSummary/"
