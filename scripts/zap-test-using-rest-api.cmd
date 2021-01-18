@@ -5,11 +5,12 @@ REM call java -jar %ZAPPROXY_HOME%\zap-2.9.0.jar -daemon -port 8090 -config api.
 REM do spider scan
 call echo "spider scan"
 call curl "http://localhost:8090/JSON/spider/action/scan/?zapapiformat=JSON&formMethod=GET&url=http://localhost:8080/WebGoat"
-
+call echo "Vent 30 sekunder"
+call timeout 30
 call echo "aktive scan"
 call curl "http://localhost:8090/JSON/ascan/action/scan/?zapapiformat=JSON&formMethod=GET&url=http://localhost:8080/WebGoat&recurse=&inScopeOnly=&scanPolicyName=&method=&postData=&contextId="
-call echo "Vent 20 sekunder"
-call timeout 20
+call echo "Vent 60 sekunder"
+call timeout 60
 REM gem report et bestemt sted
 call curl "http://127.0.0.1:8090/OTHER/core/other/jsonreport/?formMethod=GET" > ZAP_Report.json
 call curl "http://127.0.0.1:8090/JSON/alert/view/alertsSummary/"
